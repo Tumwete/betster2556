@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      {% for tip in tips %}
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-sm-8 d-flex align-items-center">
+              <a href="#" class="card-title mb-0 ml-3">
+                {% load countries %}
+               	<i class="{{ country.flag_css }}"></i>
+                {{ tip.country.flag }}
+                <h4 class="mb-0">{{ tip }}</h4>
+              </a>
+            </div>
+          </div>
+          <div class="card-content pt-4">
+            <h6 class="card-subtitle mb-2 text-muted">{{ tip.author }} on {{ tip.date_posted|date:"F d, Y" }}</h6>
+            <span>Prediction: <strong>{{ tip.prediction }}</strong></span><br>
+            <span>Odds: <strong>{{ tip.odds }}</strong></span><br>
+            <span>Analysis: <strong>{{ tip.analysis }}</strong></span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      
+    </div>
+    
+  </div>
+
+</div>
+{% endblock content %}
