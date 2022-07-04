@@ -5,7 +5,6 @@ from django_countries.fields import CountryField
 
 # Create your models here.
 class BettingTip(models.Model):
-    country = CountryField(blank_label='(select country)', default="England")
     home_team = models.CharField(max_length=30)
     away_team = models.CharField(max_length=30)
     prediction = models.CharField(max_length=20)
