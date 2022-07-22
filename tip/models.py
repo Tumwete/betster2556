@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from django_countries.fields import CountryField
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class BettingTip(models.Model):
@@ -19,3 +19,13 @@ class BettingTip(models.Model):
 
     def __str__(self):
         return self.get_title()
+
+class BetPawaTip(models.Model):
+    booking_code = models.CharField(max_length = 200)
+    image = CloudinaryField('image')
+    date_posted = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return self.booking_code
